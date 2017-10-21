@@ -7,7 +7,7 @@ This is a possible minimal solution of the Date Difference exercise.
 To build the project and create JAR artifact, run `mvn clean install`.
 The successfully passing tests will verify behaviors in different scenarios.
 
-To run the console application using stdin and stdout, run `mvn run`.
+To run the console application using stdin and stdout, run `mvn exec:java`.
 
 # Constraints and assumptions
 
