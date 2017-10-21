@@ -12,8 +12,8 @@ import static org.junit.Assert.assertThat;
  */
 public class DateObjectTest {
 
-    final Date date = new Date(2017, 10, 21);
-    final Date sameDate = new Date(2017, 10, 21);
+    private final Date date = new Date(2017, 10, 21);
+    private final Date sameDate = new Date(2017, 10, 21);
 
     @Test
     public void identity() {
