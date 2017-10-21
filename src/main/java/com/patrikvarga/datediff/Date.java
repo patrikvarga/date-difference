@@ -33,7 +33,11 @@ public final class Date implements Comparable<Date> {
      * @return date in "DD MM YYYY" format
      */
     public String asString() {
-        return day + SEPARATOR + month + SEPARATOR + year;
+        return String.format("%02d", day)
+                + SEPARATOR
+                + String.format("%02d", month)
+                + SEPARATOR
+                + String.format("%04d", year);
     }
 
     @Override

@@ -30,4 +30,19 @@ public class DateObjectTest {
         assertThat(date.asString(), is("21 10 2017"));
     }
 
+    @Test
+    public void formatAsStringWithOneDigitDay() {
+        assertThat(new Date(2017, 10, 1).asString(), is("01 10 2017"));
+    }
+
+    @Test
+    public void formatAsStringWithOneDigitMonth() {
+        assertThat(new Date(2017, 1, 21).asString(), is("21 01 2017"));
+    }
+
+    @Test
+    public void formatAsStringWithOneDigitYear() {
+        assertThat(new Date(7, 10, 21).asString(), is("21 10 0007"));
+    }
+
 }
