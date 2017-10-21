@@ -1,6 +1,8 @@
 package com.patrikvarga.datediff;
 
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import static java.util.Arrays.asList;
 import static java.util.Collections.unmodifiableList;
@@ -16,6 +18,7 @@ public final class Date implements Comparable<Date> {
     private static final List<Integer> DAYS_IN_MONTH = unmodifiableList(asList(
             31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31
     ));
+    private static final Pattern DATE_PATTERN = Pattern.compile("^(\\d{2}) (\\d{2}) (\\d{4})$");
 
     private final int year;
     private final int month;
@@ -138,4 +141,16 @@ public final class Date implements Comparable<Date> {
         return totalDays;
     }
 
+    public static Date valueOf(final String dateString) {
+        final Matcher dateMatcher = DATE_PATTERN.matcher(dateString);
+        if (dateMatcher.matches()) {
+            return new Date(
+                    Integer.valueOf(dateMatcher.group(3)),
+                    Integer.valueOf(dateMatcher.group(2)),
+                    Integer.valueOf(dateMatcher.group(1))
+            );
+        } else {
+            throw new IllegalArgumentException("Invalid date format: " + dateString);
+        }
+    }
 }
