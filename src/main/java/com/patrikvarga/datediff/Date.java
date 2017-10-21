@@ -10,7 +10,7 @@ import static java.util.Collections.unmodifiableList;
  *
  * @author patrik
  */
-public final class Date {
+public final class Date implements Comparable<Date> {
 
     private static final String SEPARATOR = " ";
     private static final List<Integer> DAYS_IN_MONTH = unmodifiableList(asList(
@@ -102,6 +102,17 @@ public final class Date {
 
     private static boolean isLeapYear(final int year) {
         return year % 4 == 0;
+    }
+
+    /**
+     * Calculate the difference in days.
+     *
+     * @param o other date
+     * @return difference in days
+     */
+    @Override
+    public int compareTo(final Date o) {
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 
 }
