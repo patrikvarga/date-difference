@@ -99,7 +99,7 @@ public final class Date implements Comparable<Date> {
 
     private static int getDaysInMonth(final int month, final int year) {
         int daysInMonth = DAYS_IN_MONTH.get(month - 1);
-        if (isLeapYear(year)) {
+        if (isLeapYear(year) && month == 2) {
             daysInMonth++;
         }
         return daysInMonth;
