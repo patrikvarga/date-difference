@@ -90,14 +90,19 @@ public final class Date implements Comparable<Date> {
     }
 
     private static int validateDay(final int year, final int month, final int day) {
-        int daysInMonth = DAYS_IN_MONTH.get(month - 1);
-        if (isLeapYear(year)) {
-            daysInMonth++;
-        }
+        final int daysInMonth = getDaysInMonth(month, year);
         if (day < 1 || day > daysInMonth) {
             throw new IllegalArgumentException("Invalid day: " + day);
         }
         return day;
+    }
+
+    private static int getDaysInMonth(final int month, final int year) {
+        int daysInMonth = DAYS_IN_MONTH.get(month - 1);
+        if (isLeapYear(year)) {
+            daysInMonth++;
+        }
+        return daysInMonth;
     }
 
     private static boolean isLeapYear(final int year) {
@@ -112,7 +117,21 @@ public final class Date implements Comparable<Date> {
      */
     @Override
     public int compareTo(final Date o) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return this.totalDays() - o.totalDays();
+    }
+
+    private int totalDays() {
+        int totalDays = 0;
+
+        for (int calcYear = 1; calcYear < year; calcYear++) {
+            totalDays += isLeapYear(calcYear) ? 366 : 365;
+        }
+        for (int calcMonth = 1; calcMonth < month; calcMonth++) {
+            totalDays += getDaysInMonth(calcMonth, year);
+        }
+        totalDays += this.day;
+
+        return totalDays;
     }
 
 }
