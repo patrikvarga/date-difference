@@ -17,3 +17,14 @@ To run the console application using stdin and stdout, run `mvn exec:java`.
 I am assuming this also means not using 3rd party libraries like Joda Time etc.
 
 > The application can limit calculation on an input range of dates from 1900 to 2010.
+
+# Technical choices and limitations
+
+The followings are conscious decisions in terms of technical limitations to time-box the exercise,
+which leads to non-production-grade code in some cases:
+
+* 100% test coverage was not the goal.
+* Test cases are broken down in different classes for readability.
+* Error handling is simplistic.
+* Logging was deemed overkill.
+* As per description, no external libraries are used, other than the ones for unit testing.
