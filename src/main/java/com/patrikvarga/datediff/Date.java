@@ -10,6 +10,9 @@ import static java.util.Collections.unmodifiableList;
 /**
  * Naive immutable Gregorian date implementation.
  *
+ * It handles leap years and does not include time. It does not go into any more scientific date
+ * handling details.
+ *
  * @author patrik
  */
 public final class Date implements Comparable<Date> {
@@ -150,7 +153,8 @@ public final class Date implements Comparable<Date> {
                     Integer.valueOf(dateMatcher.group(1))
             );
         } else {
-            throw new IllegalArgumentException("Invalid date format: " + dateString);
+            throw new IllegalArgumentException(
+                    "Invalid date format: '" + dateString + "'. Expected format: DD MM YYYY");
         }
     }
 }
